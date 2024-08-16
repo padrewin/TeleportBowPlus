@@ -1,0 +1,10 @@
+name: TeleportBowPlus
+version: '1.0-SNAPSHOT'
+main: dev.padrewin.teleportBowPlus.Core
+api-version: '1.20'
+commands:
+  teleportbowplus:
+    aliases:
+      - tbp
+      - teleportbow
+      - tbplus
