@@ -1,6 +1,7 @@
 package dev.padrewin.teleportBowPlus;
 
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -10,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -129,7 +131,12 @@ public class TBPManager {
             if (this.bowUnbreakable) {
                 meta.setUnbreakable(true);
             }
-            item.setItemMeta(meta);
+
+            // Setăm identificatorul unic pentru arc
+            NamespacedKey bowKey = new NamespacedKey(Core.getInstance(), "custom_bow_identifier");
+            meta.getPersistentDataContainer().set(bowKey, PersistentDataType.STRING, "teleport_bow");
+
+            item.setItemMeta(meta);  // Aplicăm modificările
         }
         this.bowItem = item;
     }
